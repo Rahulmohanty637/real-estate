@@ -23,6 +23,13 @@ function Navbar() {
         <button className="hidden md:block bg-white py-8 px-2 rounded-full">
           Sign Up
         </button>
+        <img src={assets.menu_icon} className="md:hidden w-7" alt="" />
+      </div>
+      {/* -------Mobile Menu------- */}
+      <div>
+        <ul>
+          <a href="" className="px-4 py-2 rounded-full inline-block">Home</a>
+        </ul>
       </div>
     </div>
   );
