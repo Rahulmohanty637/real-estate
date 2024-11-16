@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { assets, projectsData } from "../assets/assets";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [casrdToShow, setCasrdToShow] = useState(1);
+
+  useEffect(() => {
+    const upadateCardsToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setCasrdToShow(projectsData.length);
+      } else {
+        setCasrdToShow(1);
+      }
+    };
+    upadateCardsToShow();
+    window.addEventListener("resize", upadateCardsToShow);
+    return window.removeEventListener("resize", upadateCardsToShow);
+  });
 
   const nextProject = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projectsData.length);
@@ -55,7 +68,7 @@ const Projects = () => {
         <div
           className="flex gap-8 transition-transform duration-500 ease-in-out"
           style={{
-            transform: `translateX(-${(currentIndex * 100) / casrdToShow}%)`
+            transform: `translateX(-${(currentIndex * 100) / casrdToShow}%)`,
           }}
         >
           {projectsData.map((project, index) => (
