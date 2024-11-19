@@ -1,8 +1,15 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <div className="text-center p-6 py-20">
+    <motion.div
+      initial={{ opacity: 0, x: -200 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="text-center p-6 py-20"
+    >
       <h1 className="text-2xl sm:text-4xl font-bold text-center mb-4">
         Contact{" "}
         <span className="underline underline-offset-4 decoration-1 under font-light">
@@ -47,7 +54,7 @@ const Contact = () => {
           Send Message
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 
